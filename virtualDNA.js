@@ -15,6 +15,7 @@ const mockUpStrand = () => {
   return newStrand
 }
 
+//Create pAequor OBJECT
 const pAequorFactory = (specimenNum,dna) => {
   return {
     specimenNum,
@@ -28,6 +29,7 @@ const pAequorFactory = (specimenNum,dna) => {
       dna[x] = coreBase;
       return dna;
     },
+    // Compares the current pAequor‘s .dna with the passed in pAequor‘s .dna and compute how many bases are identical and in the same locations.
     compareDNA(pAequor) {
       let commonGene = 0;
       for (let i=0;i<this.dna.length;i++) {
@@ -40,6 +42,7 @@ const pAequorFactory = (specimenNum,dna) => {
       console.log(commonGene)
       console.log('Specimen #1 and specimen #2 have ' + commonGene/pAequor.dna.length*100 + '% DNA in common')
     },
+    // Returns true if the object’s .dna array contains at least 60% 'C' or 'G' bases. Otherwise, .willLikelySurvive() returns false.
     willLikelySurvive() {
       let countC = 0;
       let countG = 0;
@@ -60,12 +63,13 @@ const pAequorFactory = (specimenNum,dna) => {
   }
 }
 
+// pAequor GENERATOR
 let bigpAequor = [];
 for (i=1;i<=30;i++) {
   bigpAequor.push(pAequorFactory(i,mockUpStrand()))
 }
 
-//Test 
+//TEST
 
 let a = pAequorFactory(1,mockUpStrand());
 let b = pAequorFactory(2,mockUpStrand());
